@@ -52,9 +52,19 @@ if (Number(respo.pin) !== user.pin) {
     },
   ]);
   if (respo.selectedType == "Balance Inquiry") {
-    console.log(`Your Balance Is : ${user.balance}`);
-  } else {
-    user.balance = user.balance - respo.amount;
-    console.log(`Your New Balance Is : ${user.balance}`);
-  };
-};
+    // console.log(`Your Balance Is : ${user.balance}`);
+    if (respo.amount >= -1) {
+        user.balance = user.balance - respo.amount;
+        console.log(`Your New Balance Is : ${user.balance}`);
+    } else {
+        console.log("You have insufficient funds to withdraw from the ATM");
+    }
+} else if (respo.selectedType == "Withdraw" || respo.selectedType == "Fast Cash") {
+    if (respo.amount <= user.balance) { // Checking if user has enough balance
+        user.balance = user.balance - respo.amount;
+        console.log(`Your New Balance Is : ${user.balance}`);
+    } else {
+        console.log("You have insufficient funds to withdraw from the ATM");
+    }
+}
+}
