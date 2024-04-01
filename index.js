@@ -17,6 +17,7 @@ if (Number(respo.pin) !== user.pin) {
     console.log("You have entered an incorrect pin");
 }
 else {
+    console.log(`Your PIN code is correct. You have successfully logged in\nYou have ${user.balance} money in your account`);
     const respo = await inquirer.prompt([
         {
             name: "selectedType",
