@@ -46,7 +46,6 @@ while (!loggedIn) {
             },
         ]);
         if (transactionRespo.selectedType == "Balance Inquiry") {
-            console.log(`Your Balance Is : ${user.balance}`);
             if (transactionRespo.amount >= -1) {
                 user.balance = user.balance - transactionRespo.amount;
                 console.log(`Your New Balance Is : ${user.balance}`);
